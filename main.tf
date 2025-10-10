@@ -48,7 +48,7 @@ resource "terraform_data" "main" {
     type     = "ssh"
     user     = "ec2-user"
     password = "DevOps321"
-    host     = self.main.private_ip
+    host     = aws_instance.main.private_ip
   }
 
   provisioner "remote-exec" {
