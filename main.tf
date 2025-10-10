@@ -175,7 +175,7 @@ resource "aws_autoscaling_policy" "main" {
     target_value = 75.0
 }
 }
-resource "aws_lb_listener_rule" "catalogue" {
+resource "aws_lb_listener_rule" "main" {
   listener_arn = local.aws_lb_listener_rule_arn
   priority     = var.rule_priority
 
@@ -186,7 +186,7 @@ resource "aws_lb_listener_rule" "catalogue" {
 
   condition {
     host_header {
-      values = [loca.rule_header_url]
+      values = [local.rule_header_url]
     }
   }
 }
