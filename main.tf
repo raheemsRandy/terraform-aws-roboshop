@@ -1,7 +1,7 @@
 #for i in 00-vpc/10-sg/ 30-vpn/; do cd $i; terraform apply -auto-approve; cd .. ;done
 
 
-resource "aws_lb_target_group" "catalogue" {
+resource "aws_lb_target_group" "main" {
   name     = "${var.project}-${var.environment}-${var.component}" #roboshop-dev-catalogue
   port     = local.tg_port
   protocol = "HTTP"
