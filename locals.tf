@@ -9,7 +9,7 @@ locals {
   frontend_alb_listener_arn = data.aws_ssm_parameter.frontend_alb_listener_arn.value
 
   rule_header_url =  "${var.component}" == "frontend" ? "${var.environment}.${var.zone_name}" : "${var.component}.backend-${var.environment}.${var.zone_name}"
-  aws_lb_listener_rule_arn = "${var.component}" == "frontend" ? local.frontend_alb_listener_arn.value : local.backend_alb_listener_arn.value
+  aws_lb_listener_rule_arn = "${var.component}" == "frontend" ? local.frontend_alb_listener_arn : local.backend_alb_listener_arn
   tg_port ="${var.component}" == "frontend" ? 80 : 8080
   health_check_path ="${var.component}" == "frontend" ? "/" : "/health"
 
